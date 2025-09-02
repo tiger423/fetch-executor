@@ -186,7 +186,7 @@ def cleanup_subfolder(subfolder):
         print(f"  Cleaned up subfolder '{subfolder}'")
 
 
-def execute_table_row(row_index, table_row):
+def execute_single_row(row_index, table_row):
     """Execute single row: copy, run, collect, cleanup."""
     source_root, subfolder, command = table_row
     
@@ -222,6 +222,17 @@ def execute_table_row(row_index, table_row):
         cleanup_subfolder(subfolder)
 
 
+def execute_table_row(execution_table):
+    """Execute all rows in the table sequentially."""
+    # Check table length first
+    num_rows = len(execution_table)
+    print(f"\n--- Sequential Execution ({num_rows} rows) ---")
+    
+    # Loop through all rows
+    for row_index, table_row in enumerate(execution_table):
+        execute_single_row(row_index, table_row)
+
+
 def main():
     """Main program entry point."""
     print("Fetch Executor Starting...")
@@ -240,10 +251,8 @@ def main():
     print("\n--- Creating Execution Table ---")
     execution_table = create_execution_table(config)
     
-    # Execute each row sequentially
-    print(f"\n--- Sequential Execution ({len(execution_table)} rows) ---")
-    for row_index, table_row in enumerate(execution_table):
-        execute_table_row(row_index, table_row)
+    # Execute all rows in the table
+    execute_table_row(execution_table)
     
     print("\nFetch Executor Completed!")
 
