@@ -1,0 +1,10 @@
+﻿source_root: "E:\\claude-code\\ipmi_01"
+execution_mode: "normal"   
+programs:
+  IPMI_01-IPMI_cycle_wo_IO: "6-3-1-IPMI_01.py  files.yaml"
+  
+source_root: "E:\\claude-code\\dvt\\src\\6-Compatibility\\3-System-Robustness\\2-IPMI"
+execution_mode: "normal"   
+programs:
+  IPMI_01-IPMI_cycle_wo_IO:             "6-3-1-IPMI_01.py"
+  IPMI_02-IPMI_cycle_w_directIO:      "6-3-2-IPMI_02.py"
